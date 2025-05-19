@@ -4,10 +4,29 @@
  */
 package com.tuapp.bibliotecaapi.model;
 
-/**
- *
- * @author chati
- */
+import jakarta.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "autores")
 public class Autor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     
+    private String nombre;
+    private String nacionalidad;
+    
+    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Libro> libros;
+
+    // Constructores, getters y setters
+    public Autor() {}
+    
+    public Autor(String nombre, String nacionalidad) {
+        this.nombre = nombre;
+        this.nacionalidad = nacionalidad;
+    }
+
+   
 }
