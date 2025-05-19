@@ -6,6 +6,7 @@ package com.tuapp.bibliotecaapi.model;
 
 // src/main/java/com/tuapp/bibliotecaapi/model/Libro.java
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -20,6 +21,7 @@ public class Libro {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "autor_id")
+     @JsonIgnore
     private Autor autor;
 
     // Constructores, getters y setters
